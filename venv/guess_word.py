@@ -12,20 +12,20 @@ def main():
     for word in words:
         scrambled_word = shuffle_letters(word)
 
-        print(f'Угадайте слово: {scrambled_word}')
+        print(f'Guess word: {scrambled_word}')
         user_answer = input().lower().strip()
 
         if user_answer == word:
-            print('Верно! Вы получаете 10 очков.')
+            print('Correct! You get 10 points')
             points += 10
         else:
-            print(f'Неверно! Верный ответ – {word}')
+            print(f'Nope. Correct answer — {word}')
 
     wright_statistics(user_name, points, HISTORY_FILE)
 
     games_count, max_points = get_statistics(HISTORY_FILE)
-    print(f'\nВсего игр сыграно: {games_count}')
-    print(f'Максимальный рекорд: {max_points}')
+    print(f'\nTotal games played: {games_count}')
+    print(f'Record: {max_points}')
 
 
 if __name__ == '__main__':
