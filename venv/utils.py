@@ -35,9 +35,10 @@ def shuffle_letters(word: str):
 def wright_statistics(name: str, points: int, filename: str):
     with open(filename, encoding='utf8') as f:
         stats = json.load(f)
-    
-    stats['highscores'][name] = points
+
     stats['games_count'] += 1
+    if name not in stats['highscores'] or stats['highscores'][name] < points:
+        stats['highscores'][name] = points
 
     with open(filename, 'w', encoding='utf8') as f:
         f.write(json.dumps(stats))
