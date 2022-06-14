@@ -1,7 +1,8 @@
 from utils import get_user_name, get_words, shuffle_letters, get_statistics, wright_statistics
+from stats import StatisticsFile
 
 WORDS_FILE = 'words.txt'
-HISTORY_FILE = 'history.json'
+stats = StatisticsFile('history.json')
 
 
 def main():
@@ -21,9 +22,9 @@ def main():
         else:
             print(f'Nope. Correct answer — {word}')
 
-    wright_statistics(user_name, points, HISTORY_FILE)
+    stats.write(user_name, points)
 
-    games_count, max_points = get_statistics(HISTORY_FILE)
+    games_count, max_points = stats.get()
     print(f'\nTotal games played: {games_count}')
     print(f'Record: {max_points}')
 
